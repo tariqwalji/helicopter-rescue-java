@@ -1,4 +1,4 @@
-package com.tariqthedev;
+package com.tariqthedev.entity;
 
 import com.badlogic.gdx.physics.box2d.*;
 

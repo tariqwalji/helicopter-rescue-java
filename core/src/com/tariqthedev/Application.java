@@ -2,10 +2,12 @@ package com.tariqthedev;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.tariqthedev.entity.Helicopter;
 
 public class Application extends ApplicationAdapter {
 	public static final int GRAVITY_X = 0;
@@ -27,7 +29,6 @@ public class Application extends ApplicationAdapter {
 	}
 
 	@Override
-	@SuppressWarnings("NewApi")
 	public void render () {
 		ScreenUtils.clear(0, 0, 0, 1);
 
@@ -37,9 +38,26 @@ public class Application extends ApplicationAdapter {
 		helicopter.render(spriteBatch, deltaTime);
 		spriteBatch.end();
 
-		helicopter.handleInput();
+		handleInput();
+
 		world.step(1/60f, 6, 2);
 	}
+
+	public void handleInput() {
+		if(Gdx.input.isKeyPressed(Input.Keys.A)) {
+			helicopter.left();
+		}
+		if(Gdx.input.isKeyPressed(Input.Keys.D)) {
+			helicopter.right();
+		}
+		if(Gdx.input.isKeyPressed(Input.Keys.W)) {
+			helicopter.up();
+		}
+		if(Gdx.input.isKeyPressed(Input.Keys.S)) {
+			helicopter.down();
+		}
+	}
+
 
 	@Override
 	public void dispose () {

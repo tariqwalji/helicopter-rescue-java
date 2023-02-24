@@ -1,4 +1,4 @@
-package com.tariqthedev;
+package com.tariqthedev.entity;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;

@@ -1,7 +1,5 @@
-package com.tariqthedev;
+package com.tariqthedev.entity;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.*;
 
@@ -18,19 +16,20 @@ public class Helicopter {
         animation.render(spriteBatch, deltaTime, physics.getX(), physics.getY());
     }
 
-    public void handleInput() {
-        if(Gdx.input.isKeyPressed(Input.Keys.A)) {
-            physics.left();
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.D)) {
-            physics.right();
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.W)) {
-            physics.up();
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.S)) {
-            physics.down();
-        }
+    public void left() {
+        physics.left();
+    }
+
+    public void right() {
+        physics.right();
+    }
+
+    public void up() {
+        physics.up();
+    }
+
+    public void down() {
+        physics.down();
     }
 
     public void dispose() {
