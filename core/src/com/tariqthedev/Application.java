@@ -1,67 +1,51 @@
 package com.tariqthedev;
 
+import com.artemis.World;
 import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.tariqthedev.entity.Helicopter;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
+import com.tariqthedev.script.PlayerScript;
+import games.rednblack.editor.renderer.SceneConfiguration;
+import games.rednblack.editor.renderer.SceneLoader;
+import games.rednblack.editor.renderer.utils.ComponentRetriever;
+import games.rednblack.editor.renderer.utils.ItemWrapper;
 
 public class Application extends ApplicationAdapter {
-	public static final int GRAVITY_X = 0;
-	public static final int GRAVITY_Y = -10;
-	SpriteBatch spriteBatch;
-	float deltaTime;
-	World world;
 
-	Helicopter helicopter;
+	private Viewport viewport;
+	private OrthographicCamera camera;
+
+	private SceneLoader sceneLoader;
+
+	private ItemWrapper root;
+	private World world;
 
 	@Override
 	public void create () {
-		Box2D.init();
-		spriteBatch = new SpriteBatch();
-		world = new World(new Vector2(GRAVITY_X, GRAVITY_Y), true);
-		deltaTime = 0f;
+		camera = new OrthographicCamera();
+		viewport = new ExtendViewport(19, 10, camera);
 
-		helicopter = new Helicopter(world, (float)Gdx.graphics.getWidth() / 2, (float)Gdx.graphics.getHeight() / 2);
+		SceneConfiguration config = new SceneConfiguration();
+		sceneLoader = new SceneLoader(config);
+		sceneLoader.loadScene("MainScene", viewport);
+
+		world = sceneLoader.getEngine();
+		root = new ItemWrapper(sceneLoader.getRoot(), world);
+
+		ItemWrapper player = root.getChild("helicopter");
+		player.addScript(new PlayerScript());
 	}
 
 	@Override
 	public void render () {
 		ScreenUtils.clear(0, 0, 0, 1);
-
-		deltaTime += Gdx.graphics.getDeltaTime();
-
-		spriteBatch.begin();
-		helicopter.render(spriteBatch, deltaTime);
-		spriteBatch.end();
-
-		handleInput();
-
-		world.step(1/60f, 6, 2);
+		viewport.apply();
+		sceneLoader.getEngine().process();
 	}
-
-	public void handleInput() {
-		if(Gdx.input.isKeyPressed(Input.Keys.A)) {
-			helicopter.left();
-		}
-		if(Gdx.input.isKeyPressed(Input.Keys.D)) {
-			helicopter.right();
-		}
-		if(Gdx.input.isKeyPressed(Input.Keys.W)) {
-			helicopter.up();
-		}
-		if(Gdx.input.isKeyPressed(Input.Keys.S)) {
-			helicopter.down();
-		}
-	}
-
 
 	@Override
 	public void dispose () {
-		spriteBatch.dispose();
-		helicopter.dispose();
 	}
 }

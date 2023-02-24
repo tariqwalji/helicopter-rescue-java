@@ -1,0 +1,35 @@
+tileset bosque-tile-set.png
+	size: 1024, 64
+	filter: Linear, Linear
+tileset bosque0
+	bounds: 601, 1, 48, 48
+tileset bosque1
+	bounds: 651, 1, 48, 48
+tileset bosque10
+	bounds: 51, 1, 48, 48
+tileset bosque11
+	bounds: 1, 1, 48, 48
+tileset bosque12
+	bounds: 101, 1, 48, 48
+tileset bosque13
+	bounds: 151, 1, 48, 48
+tileset bosque14
+	bounds: 201, 1, 48, 48
+tileset bosque15
+	bounds: 251, 1, 48, 48
+tileset bosque2
+	bounds: 551, 1, 48, 48
+tileset bosque3
+	bounds: 501, 1, 48, 48
+tileset bosque4
+	bounds: 351, 1, 48, 48
+tileset bosque5
+	bounds: 301, 1, 48, 48
+tileset bosque6
+	bounds: 401, 1, 48, 48
+tileset bosque7
+	bounds: 451, 1, 48, 48
+tileset bosque8
+	bounds: 751, 1, 48, 48
+tileset bosque9
+	bounds: 701, 1, 48, 48

@@ -1,0 +1,38 @@
+pack.png
+	size: 1024, 64
+	filter: Linear, Linear
+Townfolk-Adult-M-007 copy
+	index: 2
+	bounds: 1, 1, 24, 28
+Townfolk-Adult-M-007 copy
+	index: 1
+	bounds: 27, 1, 24, 28
+Townfolk-Adult-M-007 copy
+	index: 0
+	bounds: 53, 1, 24, 28
+cabine
+	bounds: 785, 31, 64, 32
+helicopter
+	index: 0
+	bounds: 1, 31, 96, 32
+helicopter
+	index: 1
+	bounds: 99, 31, 96, 32
+helicopter
+	index: 3
+	bounds: 197, 31, 96, 32
+helicopter
+	index: 2
+	bounds: 295, 31, 96, 32
+helicopter
+	index: 6
+	bounds: 393, 31, 96, 32
+helicopter
+	index: 7
+	bounds: 491, 31, 96, 32
+helicopter
+	index: 5
+	bounds: 589, 31, 96, 32
+helicopter
+	index: 4
+	bounds: 687, 31, 96, 32
